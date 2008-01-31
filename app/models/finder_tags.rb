@@ -57,7 +57,7 @@ private
     page = nil
     @all_pages.each do |p|
       break if page
-      # logger.error("#{p.url}\n++++++++++++++++++++++++++++++++++++++\n")
+      logger.error("#{p.url}\n++++++++++++++++++++++++++++++++++++++\n")
       if p.url.match(@pattern)
         page = p
       end
