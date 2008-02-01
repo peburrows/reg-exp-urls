@@ -38,12 +38,18 @@ module FinderTags
   
   tag 'finder:url:html_link' do |tag|
     # raise StandardTags::TagError.new("`finder:url:html_link' tag must contain a `matches' attribute.") unless tag.attr.has_key?('matches')
-    tag.locals.finder = find_page(tag.attr['matches'])
+    if !tag.locals.finder
+      tag.locals.finder = find_page(tag.attr['matches'])
+    end
     if tag.locals.finder
       f = tag.locals.finder
-      %{<a href="#{f.url}" title="#{f.title}">#{f.title}</a>}
+      extra_attr = ""
+      tag.attr.each do |a,v|
+        extra_attr << " #{a}=\"#{v}\"" unless a.to_s == 'matches'
+      end
+      %{<a href="#{f.url}" title="#{f.title}"#{extra_attr}>#{f.title}</a>}
     else
-      '<strong>No Page Was Found To Match That URL</strong>'
+      '<strong>Page Not Found</strong>'
     end
   end
   
