@@ -1,3 +1,21 @@
-= Reg Exp Urls
+= RegExpUrls Extension
 
-Description goes here
+Created By: Phil Burrows, January 2008
+send patches to: peburrows@gmail.com
+http://philburrows.com
+http://dev.philburrows.com/svn/radiant-extensions/reg_exp_urls/trunk
+
+-------------------------
+
+== Description
+
+An extension to make links and urls in your pages much less fragile.
+
+== Usage
+
+the 'matches' attribute is required, and is a regular expression to be tested
+against the pages in your site. similar to the standard <r:find url="/path" />
+except this tag uses regular expressions instead of absolutes.
+
+<r:finder:url:link matches="/about$" />
+<r:finder:url:html_link matches="/support$" />
