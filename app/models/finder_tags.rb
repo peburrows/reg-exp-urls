@@ -5,7 +5,7 @@ module FinderTags
   
   tag 'finder' do |tag|
     tag.attr.each do |a,v|
-      logger.error("\n\n\n#{a} :: #{v}\n\n\n")
+      # logger.error("\n\n\n#{a} :: #{v}\n\n\n")
     end
     tag.expand
   end
@@ -14,7 +14,7 @@ module FinderTags
   tag 'finder:url' do |tag|
     # p = find_page
     tag.attr.each do |a,v|
-      logger.error("\n\n\n#{a} :: #{v}\n\n\n")
+      # logger.error("\n\n\n#{a} :: #{v}\n\n\n")
     end
     if tag.attr['matches']
       tag.locals.finder = find_page(tag.attr['matches'])
@@ -25,7 +25,7 @@ module FinderTags
   tag 'finder:url:link' do |tag|
     return tag.locals.finder.url if tag.locals.finder
     tag.attr.each do |a,v|
-      logger.error("\n\n\n#{a} :: #{v}\n\n\n")
+      # logger.error("\n\n\n#{a} :: #{v}\n\n\n")
     end
     tag.locals.finder = find_page(tag.attr['matches'])
     if tag.locals.finder
@@ -63,7 +63,7 @@ private
     page = nil
     @all_pages.each do |p|
       break if page
-      logger.error("#{p.url}\n++++++++++++++++++++++++++++++++++++++\n")
+      # logger.error("#{p.url}\n++++++++++++++++++++++++++++++++++++++\n")
       if p.url.match(@pattern)
         page = p
       end
