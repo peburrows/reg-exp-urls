@@ -60,6 +60,13 @@ module FinderTags
     end
   end
   
+  tag 'if' do |tag|
+    st = tag.attr['status']
+    if tag.locals.page.status.name.downcase == st.downcase
+      tag.expand
+    end
+  end
+  
 private
   
   def find_page(string)
