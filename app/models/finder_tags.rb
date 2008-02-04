@@ -53,6 +53,12 @@ module FinderTags
     end
   end
   
+  tag 'unless' do |tag|
+    st = tag.attr['status']
+    unless tag.locals.page.status.downcase == st.downcase
+      tag.expand
+    end
+  end
   
 private
   
